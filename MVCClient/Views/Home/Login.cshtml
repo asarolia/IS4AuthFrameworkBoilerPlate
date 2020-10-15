@@ -1,0 +1,29 @@
+﻿@model MVCClient.Controllers.DiagnosticsViewModel
+
+@{
+    ViewData["Title"] = "User Claims";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>Below are the user claims received from Identity server.</p>
+
+<table>
+    @*@foreach (var claim in User.Claims)
+        {
+            <tr>
+                <td>@claim.Type</td>
+                <td>@claim.Value</td>
+
+            </tr>
+
+        }*@
+    @foreach (var claim in Model.AuthenticateResult.Principal.Claims)
+    {
+        <tr>
+            <td>@claim.Type</td>
+            <td>@claim.Value</td>
+        </tr>
+
+    }
+</table>
